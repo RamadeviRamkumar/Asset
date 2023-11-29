@@ -4,16 +4,16 @@ const Asset = require('../model/model.js');
 
 router.post("/addasset", async(req, res) => {
     var user = new Asset();
-    user.AssetNumber = req.body.AssetNumber;
-    user.AssetId = req.body.AssetId;
-    user.Category = req.body.Category;
-    user.SubCategory = req.body.SubCategory;
-    user.Model = req.body.Model;
-    user.AssignedTo = req.body.AssignedTo;
-    user.AssignedBy = req.body.AssignedBy;
+    user.AssetNumber  = req.body.AssetNumber;
+    user.AssetId      = req.body.AssetId;
+    user.Category     = req.body.Category;
+    user.SubCategory  = req.body.SubCategory;
+    user.Model        = req.body.Model;
+    user.AssignedTo   = req.body.AssignedTo;
+    user.AssignedBy   = req.body.AssignedBy;
     user.AssignedDate = req.body.AssignedDate;
-    user.ReturnDate = req.body.ReturnDate;
-    user.AssetsLocation = req.body.AssetsLocation;
+    user.Price        = req.body.Price;
+    user.Status       = req.body.Status;
     try {
         await user.save();
         res.status(201).json({
