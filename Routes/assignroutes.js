@@ -1,22 +1,21 @@
 const router = require('express').Router();
 
-const AssignedAsset = require('../model/assign model.js');
+const AssignedAsset = require('../model/assignmodel.js');
 
 router.post("/assignassets", async (req, res) => {
-    var assignedAsset = new AssignedAsset();
-    assignedAsset.AssetsName = req.body.AssetsName;
-    assignedAsset.AssetsId = req.body.AssetsId;
-    assignedAsset.Category = req.body.Category;
-    assignedAsset.SubCategory = req.body.SubCategory;
-    assignedAsset.Model = req.body.Model;
-    assignedAsset.PurchaseDate = req.body.PurchaseDate;
-    assignedAsset.AssetsLocation = req.body.AssetsLocation;
-
+    var user = new AssignedAsset();
+    user.AssetsName     = req.body.AssetsName;
+    user.AssetsId       = req.body.AssetsId;
+    user.Category       = req.body.Category;
+    user.SubCategory    = req.body.SubCategory;
+    user.Model          = req.body.Model;
+    user.PurchaseDate   = req.body.PurchaseDate;
+    user.AssetsLocation = req.body.AssetsLocation;
     try {
         await assignedAsset.save();
         res.status(201).json({
             message: 'New Assign details Successfully',
-            data: assignedAsset,
+            data: user,
         });
     } catch (err) {
         res.status(400).json({
